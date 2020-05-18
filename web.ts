@@ -116,6 +116,20 @@ function update() {
   }
 }
 
+function collision(ball: Ball, player: Player) {
+  const pTop = player.y;
+  const pBottom = pTop + playerHeight;
+  const pLeft = player.x;
+  const pRight = pLeft + playerWidth;
+
+  const bTop = ball.y - radius;
+  const bBottom = ball.y + radius;
+  const bLeft = ball.x - radius;
+  const bRight = ball.x + radius;
+
+  return pTop < bBottom && pBottom > bTop && pLeft < bRight && pRight > bLeft;
+}
+
 function render() {
   drawRect(0, 0, width, height, 'black');
 
@@ -175,18 +189,4 @@ function drawScore(player: Player) {
     return;
   }
   drawText(3 * x, y, score.toString(), 'white');
-}
-
-function collision(ball: Ball, player: Player) {
-  const pTop = player.y;
-  const pBottom = pTop + playerHeight;
-  const pLeft = player.x;
-  const pRight = pLeft + playerWidth;
-
-  const bTop = ball.y - radius;
-  const bBottom = ball.y + radius;
-  const bLeft = ball.x - radius;
-  const bRight = ball.x + radius;
-
-  return pTop < bBottom && pBottom > bTop && pLeft < bRight && pRight > bLeft;
 }
