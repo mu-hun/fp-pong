@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start:web": "lite-server"
+  },
   "dependencies": {
     "typescript": "^3.9.2"
   },
