@@ -1,5 +1,18 @@
 {
   "dependencies": {
     "typescript": "^3.9.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.3",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.0.0"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>"
+    ],
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    }
   }
 }
