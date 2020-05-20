@@ -101,16 +101,29 @@ export function update(state: State) {
   }
 }
 
+export function getPlayerPosition(player: Player) {
+  const top = player.y;
+  const bottom = top + playerHeight;
+  const left = player.x;
+  const right = left + playerWidth;
+
+  return { top, bottom, left, right };
+}
+
+export function getBallPosition(ball: Ball) {
+  const top = ball.y - radius;
+  const bottom = ball.y + radius;
+  const left = ball.x - radius;
+  const right = ball.x + radius;
+
+  return { top, bottom, left, right };
+}
+
 export function collision(ball: Ball, player: Player) {
-  const pTop = player.y;
-  const pBottom = pTop + playerHeight;
-  const pLeft = player.x;
-  const pRight = pLeft + playerWidth;
+  const p = getPlayerPosition(player);
+  const b = getBallPosition(ball);
 
-  const bTop = ball.y - radius;
-  const bBottom = ball.y + radius;
-  const bLeft = ball.x - radius;
-  const bRight = ball.x + radius;
-
-  return pTop < bBottom && pBottom > bTop && pLeft < bRight && pRight > bLeft;
+  return (
+    p.top < b.bottom && p.bottom > b.top && p.left < b.right && p.right > b.left
+  );
 }
